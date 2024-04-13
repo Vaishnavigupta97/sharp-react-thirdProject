@@ -1,32 +1,28 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Wrapper from "../wrapComponent/Wrapper";
 // import Popup from "./Popup";
 
 const Form = (props) => {
-    const [name, setname] = useState("");
-    const [age, setAge] = useState([]);
-    // const [error, setError] = useState(false);
-    // const [popUp, setPopUp] = useState("");
+    const nameInputRef = useRef();
+    const ageInputRef = useRef();
+    const collegeInputRef = useRef();
 
-    const usernameHandler = (event) => {
-        setname(event.target.value);
-    }
-    const userAgeHandler = (event) => {
-        setAge(event.target.value);   
-    }
     const formChangeHandler = (e) =>{
         e.preventDefault();
+        const enteredName = nameInputRef.current.value;
+        const enteredAge = ageInputRef.current.value;
+        const enteredCollegeName = collegeInputRef.current.value;
+
         const saveObj = {
          id : Math.random(),   
-         formName : name,
-         formAge : age 
+         formName : enteredName,
+         formAge : enteredAge,
+         collegeName : enteredCollegeName 
         }
-        // if(name.length == "" || age.length == ""){
-        //     setError(true);
-        // }
         props.addFormObj(saveObj);
-        setname("");
-        setAge("");
+        nameInputRef.current.value = "";
+        ageInputRef.current.value = "";
+        collegeInputRef.current.value = "";
     }
     return(
         <Wrapper>
@@ -34,11 +30,15 @@ const Form = (props) => {
            <div className="formcard">
             <div className="formLabelCard">
                 <label><strong>UserName </strong></label> <br />
-                <input type="text" value={name} onChange={usernameHandler}/>
+                <input type="text" ref={nameInputRef}/>
+            </div>
+            <div className="formLabelCard">
+                <label><strong>CollegeName </strong></label> <br />
+                <input type="text" ref={collegeInputRef}/>
             </div>
             <div className="formLabelCard">
                 <label><strong>Age (Years) </strong></label> <br />
-                <input type="number" value={age} onChange={userAgeHandler}/>
+                <input type="number"ref={ageInputRef}/>
             </div>
             <button type="submit">Add User</button>
             </div>

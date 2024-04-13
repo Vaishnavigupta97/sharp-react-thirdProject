@@ -5,7 +5,7 @@ const ShowList = (props) => {
                 <ol >
                     {props.showTodoList.map((item) => {
                         return (
-                            <li key={item.id}>{item.formName} ({item.formAge} Years Old)</li>
+                            <li key={item.id}>{item.formName} (College Name : {item.collegeName}) ({item.formAge} Years Old)</li>
                         );
                     })}
                 </ol>

@@ -20,15 +20,16 @@ function App() {
         return [...prevData];
       })
     }
-    if (objArg.formAge <= 0 || objArg.formName === "") {
+    // if (objArg.formAge <= 0 || objArg.formName === "" || objArg.collegeName == "") {
+    //   setPopupBox(true);
+    // }
+    if (objArg.formName.length === "" || objArg.formAge.length == "" || objArg.collegeName == "") {
       setPopupBox(true);
-    }
-    if (objArg.formName.length === "" || objArg.formAge.length == "") {
       setError(true);
       setErrorMsg("Please enter a valid name and age (non-empty Values).")
-      // pera = <p>njn</p>;
     }
-    if (objArg.formAge <= 0) {
+    if (objArg.formAge < 0) {
+      setPopupBox(true);
       setError(true);
       setErrorMsg("Please enter a valid age (>0).")
     } 
