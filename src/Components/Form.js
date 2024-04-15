@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Wrapper from "../wrapComponent/Wrapper";
 // import Popup from "./Popup";
 
@@ -24,6 +24,7 @@ const Form = (props) => {
         ageInputRef.current.value = "";
         collegeInputRef.current.value = "";
     }
+    // useEffect(() => enteredCollegeName)
     return(
         <Wrapper>
         <form onSubmit={formChangeHandler}> 
@@ -34,7 +35,7 @@ const Form = (props) => {
             </div>
             <div className="formLabelCard">
                 <label><strong>CollegeName </strong></label> <br />
-                <input type="text" ref={collegeInputRef}/>
+                <input type="text" ref={collegeInputRef} required />
             </div>
             <div className="formLabelCard">
                 <label><strong>Age (Years) </strong></label> <br />

@@ -23,16 +23,21 @@ function App() {
     // if (objArg.formAge <= 0 || objArg.formName === "" || objArg.collegeName == "") {
     //   setPopupBox(true);
     // }
-    if (objArg.formName.length === "" || objArg.formAge.length == "" || objArg.collegeName == "") {
+    if (objArg.formName.length === "" || objArg.formAge.length == "") {
       setPopupBox(true);
       setError(true);
       setErrorMsg("Please enter a valid name and age (non-empty Values).")
+      return
     }
     if (objArg.formAge < 0) {
       setPopupBox(true);
       setError(true);
       setErrorMsg("Please enter a valid age (>0).")
+      return;
     } 
+    if(objArg.collegeName.length === 0){
+      return;
+    }
   }
   const cancelPopupBox = () => {
     setPopupBox(false);
